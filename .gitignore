@@ -6,3 +6,6 @@ data/new*
 
 # ipynb checkpoints
 .ipynb_checkpoints/*
+
+# helper notebooks
+*.ipynb
