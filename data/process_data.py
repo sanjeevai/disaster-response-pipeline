@@ -28,12 +28,15 @@ args = parser.parse_args()
 
 def load_data(messages_file_path, categories_file_path):
     """
+    Takes inputs as two CSV files, imports them as pandas dataframe. Combines \
+    them into a single dataframe
+
     Args:
-    messages_file_path: Full path of messages CSV file
-    categories_file_path: Full path of categories CSV file
+    messages_file_path str: Messages CSV file path
+    categories_file_path str: Categories CSV file path
 
     Returns:
-    merged_df: Dataframe obtained from merging the two input data
+    merged_df pandas_dataframe: Dataframe obtained from merging the two input data
     """
 
     messages = pd.read_csv(messages_file_path)
@@ -41,35 +44,37 @@ def load_data(messages_file_path, categories_file_path):
     
     merged_df = messages.merge(categories, on='id')
     
-    # print(merged_df.head())
-    
     return merged_df
 
-def clean_data(merged_df, categories_file_path):
+def clean_data(merged_df):
     """
-    Reads in the combined dataframe and cleans it for use by ML model
+    Cleans the combined dataframe for use by ML model
     
     Args:
-    merged_df pandas_dataframe: Combined dataframe returned from load_data() \
+    merged_df pandas_dataframe: Merged dataframe returned from load_data() \
     function
 
     Returns:
-    cleaned_df pandas_dataframe: Cleaned data to be used by ML model
+    df pandas_dataframe: Cleaned data to be used by ML model
     """
 
     # Split categories into separate category columns
-    df = merged_df
+    df = merged_df # renaming for simplicity
     categories = df['categories'].str.split(";",\
                                             expand = True)
+    
     # select the first row of the categories dataframe
     row = categories.iloc[0,:].values
+    
     # use this row to extract a list of new column names for categories.
     new_cols = [r[:-2] for r in row]
 
     # rename the columns of `categories`
     categories.columns = new_cols
 
+    # Convert category values to just numbers 0 or 1.
     for column in categories:
+
         # set each value to be the last character of the string
         categories[column] = categories[column].str[-1]
         
@@ -94,13 +99,17 @@ def export_data(df, database_file_path):
     Args:
     df pandas_dataframe: Cleaned data returned from clean_data() function
     database_file_path str: File path of SQL Database into which the cleaned\
-    data is saved
-    """
+    data is to be saved
 
-    db_file_name = database_file_path.split("/")[-1]
+    Returns:
+    None
+    """
+    
     engine = create_engine('sqlite:///{}'.format(database_file_path)) 
-    db_name = db_file_name.split(".")[0]
-    df.to_sql(db_name, engine, index=False, if_exists = 'replace')
+    db_file_name = database_file_path.split("/")[-1] # extract file name from \
+                                                     # the file path
+    table_name = db_file_name.split(".")[0]
+    df.to_sql(table_name, engine, index=False, if_exists = 'replace')
 
 
 def main():
@@ -117,12 +126,13 @@ def main():
     print(">>> DATA MERGED")
     print(">>> CLEANING DATA")
     print(">>> ...")
-    df = clean_data(merged_df,\
-               categories_file_path)
+    df = clean_data(merged_df)
     print(">>> DATA CLEANED")
     print(">>> EXPORTING TO SQL DATABASE")
     print(">>> ...")
     export_data(df, database_file_path)
     print(">>> EXPORTED TO SQL DATABASE")
+
+# run
 if __name__ == '__main__':
     main()
