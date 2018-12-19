@@ -1,0 +1,5 @@
+# vscode settings
+.vscode/*
+
+# files for testing
+data/new*
