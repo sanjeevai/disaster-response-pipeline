@@ -91,7 +91,7 @@ def clean_data(merged_df):
 
     return df
 
-def export_data(df, database_file_path):
+def save_data(df, database_file_path):
     """
     Saves cleaned data to an SQL database
 
@@ -129,8 +129,9 @@ def main():
     print(">>> DATA CLEANED")
     print(">>> EXPORTING TO SQL DATABASE")
     print(">>> ...")
-    export_data(df, database_file_path)
+    save_data(df, database_file_path)
     print(">>> EXPORTED TO SQL DATABASE")
+    print(">>> DATA HAS BEEN EXPORTED HERE: data/{}".format(database_file_path.split("/")[-1]))
 
 # run
 if __name__ == '__main__':
