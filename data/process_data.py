@@ -1,4 +1,5 @@
 # import statements
+import sys
 import pandas as pd
 from sqlalchemy import create_engine
 import argparse
@@ -91,21 +92,21 @@ def clean_data(df):
 
     return df
 
-def save_data(df, database_file_path):
+def save_data(df, database_file_name):
     """
     Saves cleaned data to an SQL database
 
     Args:
     df pandas_dataframe: Cleaned data returned from clean_data() function
-    database_file_path str: File path of SQL Database into which the cleaned\
+    database_file_name str: File path of SQL Database into which the cleaned\
     data is to be saved
 
     Returns:
     None
     """
     
-    engine = create_engine('sqlite:///{}'.format(database_file_path)) 
-    db_file_name = database_file_path.split("/")[-1] # extract file name from \
+    engine = create_engine('sqlite:///{}'.format(database_file_name)) 
+    db_file_name = database_file_name.split("/")[-1] # extract file name from \
                                                      # the file path
     table_name = db_file_name.split(".")[0]
     df.to_sql(table_name, engine, index=False, if_exists = 'replace')
@@ -120,7 +121,7 @@ def main():
     if args.cat:
         categories_file_path = args.cat
     if args.db:
-        database_file_path = args.db
+        database_file_name = args.db
     merged_df = load_data(messages_file_path, categories_file_path)
     print(">>> DATA MERGED")
     print(">>> CLEANING DATA")
@@ -129,9 +130,10 @@ def main():
     print(">>> DATA CLEANED")
     print(">>> EXPORTING TO SQL DATABASE")
     print(">>> ...")
-    save_data(df, database_file_path)
+    save_data(df, database_file_name)
     print(">>> EXPORTED TO SQL DATABASE")
-    print(">>> DATA HAS BEEN EXPORTED HERE: data/{}".format(database_file_path.split("/")[-1]))
+    print(">>> DATA HAS BEEN EXPORTED HERE: data/{}".format(database_file_name.split("/")[-1]))
+
 
 # run
 if __name__ == '__main__':
