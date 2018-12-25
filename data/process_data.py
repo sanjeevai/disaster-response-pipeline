@@ -27,38 +27,38 @@ args = parser.parse_args()
 
 def load_data(messages_file_path, categories_file_path):
     """
-    Takes inputs as two CSV files, imports them as pandas dataframe. Combines \
-    them into a single dataframe
+    - Takes inputs as two CSV files
+    - Imports them as pandas dataframe.
+    - Merges them into a single dataframe
 
     Args:
-    messages_file_path str: Messages CSV file path
-    categories_file_path str: Categories CSV file path
+    messages_file_path str: Messages CSV file
+    categories_file_path str: Categories CSV file
 
     Returns:
-    merged_df pandas_dataframe: Dataframe obtained from merging the two input data
+    merged_df pandas_dataframe: Dataframe obtained from merging the two input\
+    data
     """
 
     messages = pd.read_csv(messages_file_path)
     categories = pd.read_csv(categories_file_path)
     
-    merged_df = messages.merge(categories, on='id')
+    df = messages.merge(categories, on='id')
     
-    return merged_df
+    return df
 
-def clean_data(merged_df):
+def clean_data(df):
     """
-    Cleans the combined dataframe for use by ML model
+    - Cleans the combined dataframe for use by ML model
     
     Args:
-    merged_df pandas_dataframe: Merged dataframe returned from load_data() \
-    function
+    df pandas_dataframe: Merged dataframe returned from load_data() function
 
     Returns:
     df pandas_dataframe: Cleaned data to be used by ML model
     """
 
     # Split categories into separate category columns
-    df = merged_df # renaming for simplicity
     categories = df['categories'].str.split(";",\
                                             expand = True)
     
