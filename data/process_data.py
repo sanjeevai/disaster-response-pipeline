@@ -59,7 +59,7 @@ def clean_data(df):
         categories[column] = pd.to_numeric(categories[column])
     
     # drop the original categories column from `df`
-    df.drop(columns='categories', axis = 1, inplace = True)
+    df.drop('categories', axis = 1, inplace = True)
 
     # concatenate the original dataframe with the new `categories` dataframe
     df[categories.columns] = categories
