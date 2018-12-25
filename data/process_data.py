@@ -2,29 +2,6 @@
 import sys
 import pandas as pd
 from sqlalchemy import create_engine
-import argparse
-
-parser = argparse.ArgumentParser(description="Takes two CSV files as inputs, \
-                                cleans them and exports the saved dataset to \
-                                an SQLite database")
-
-# add argument for message CSV file
-parser.add_argument('--msg',
-                    type=str,
-                    help='Full path of messages data CSV file')
-
-# add argument for categories CSV file
-parser.add_argument('--cat',
-                    type=str,
-                    help='Full path of categories data CSV file')
-
-# add argument for SQL database file
-parser.add_argument('--db',
-                    type=str,
-                    help='Full path of the database(.db) file which will \
-                    contain the cleaned data')
-
-args = parser.parse_args()
 
 def load_data(messages_file_path, categories_file_path):
     """
@@ -113,26 +90,29 @@ def save_data(df, database_file_name):
 
 
 def main():
-    print(">>> ...")
-    print(">>> MERGING MESSAGES AND CATEGORIES DATA")
-    print(">>> ...")
-    if args.msg:
-        messages_file_path = args.msg
-    if args.cat:
-        categories_file_path = args.cat
-    if args.db:
-        database_file_name = args.db
-    merged_df = load_data(messages_file_path, categories_file_path)
-    print(">>> DATA MERGED")
-    print(">>> CLEANING DATA")
-    print(">>> ...")
-    df = clean_data(merged_df)
-    print(">>> DATA CLEANED")
-    print(">>> EXPORTING TO SQL DATABASE")
-    print(">>> ...")
-    save_data(df, database_file_name)
-    print(">>> EXPORTED TO SQL DATABASE")
-    print(">>> DATA HAS BEEN EXPORTED HERE: data/{}".format(database_file_name.split("/")[-1]))
+    if len(sys.argv) == 4:
+
+        messages_filepath, categories_filepath, database_filepath = sys.argv[1:]
+
+        print('Loading data...\n    MESSAGES: {}\n    CATEGORIES: {}'
+              .format(messages_filepath, categories_filepath))
+        df = load_data(messages_filepath, categories_filepath)
+
+        print('Cleaning data...')
+        df = clean_data(df)
+        
+        print('Saving data...\n    DATABASE: {}'.format(database_filepath))
+        save_data(df, database_filepath)
+        
+        print('Cleaned data saved to database!')
+    
+    else:
+        print('Please provide the filepaths of the messages and categories '\
+              'datasets as the first and second argument respectively, as '\
+              'well as the filepath of the database to save the cleaned data '\
+              'to as the third argument. \n\nExample: python process_data.py '\
+              'disaster_messages.csv disaster_categories.csv '\
+              'DisasterResponse.db')
 
 
 # run
