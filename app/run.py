@@ -1,9 +1,9 @@
+# imports
+
 import json, plotly
 import pandas as pd
-
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
-
 from flask import Flask
 from flask import render_template, request, jsonify
 from plotly.graph_objs import Bar
@@ -11,10 +11,20 @@ from pprint import pprint
 from sklearn.externals import joblib
 from sqlalchemy import create_engine
 
-
+# initializing Flask app
 app = Flask(__name__)
 
 def tokenize(text):
+    """
+    Tokenizes text data
+
+    Args:
+    text str: Messages as text data
+
+    Returns:
+
+    clean_tokens list: Processed text after normalizing, tokenizing and lemmatizing
+    """
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
 
@@ -39,12 +49,15 @@ model = joblib.load("../models/classifier.pkl")
 def index():
     
     # extract data needed for visuals
-    # TODO: Below is an example - modify to extract data for your own visuals
-    genre_counts = df.groupby('genre').count()['message']
-    genre_names = list(genre_counts.index)
-    cat_p = df[df.columns[4:]].sum()/len(df)
-    cat_p = cat_p.sort_values(ascending = False)
-    cats = list(cat_p.index)
+    genre_counts = df.groupby('genre').count()['message'] # message count based\
+                                                          # on genre
+    genre_names = list(genre_counts.index)                # genre names
+    cat_p = df[df.columns[4:]].sum()/len(df)              # proportion based on\
+                                                          # categories
+    cat_p = cat_p.sort_values(ascending = False)          # largest bar will be \
+                                                          # on left
+    cats = list(cat_p.index)                              # category names
+    
     # create visuals
     figures = [
         {
@@ -108,11 +121,10 @@ def go():
     classification_results = dict(zip(df.columns[4:], classification_labels))
 
     # This will render the go.html Please see that file. 
-    return render_template(
-        'go.html',
-        query=query,
-        classification_result=classification_results
-    )
+    return render_template('go.html',
+                            query=query,
+                            classification_result=classification_results
+                          )
 
 
 def main():
