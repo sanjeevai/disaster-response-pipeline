@@ -6,3 +6,6 @@
 
 # helper notebooks
 *.ipynb
+
+# Python cache
+app/__pycache__/*.pyc
