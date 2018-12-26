@@ -1,9 +1,6 @@
 # vscode settings
 .vscode/*
 
-# files for testing
-data/new*
-
 # ipynb checkpoints
 .ipynb_checkpoints/*
 
