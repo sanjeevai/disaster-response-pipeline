@@ -1,5 +1,4 @@
-import json
-import plotly
+import json, plotly
 import pandas as pd
 
 from nltk.stem import WordNetLemmatizer
@@ -8,6 +7,7 @@ from nltk.tokenize import word_tokenize
 from flask import Flask
 from flask import render_template, request, jsonify
 from plotly.graph_objs import Bar
+from pprint import pprint
 from sklearn.externals import joblib
 from sqlalchemy import create_engine
 
@@ -42,10 +42,11 @@ def index():
     # TODO: Below is an example - modify to extract data for your own visuals
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
-    
+    cat_p = df[df.columns[4:]].sum()/len(df)
+    cat_p = cat_p.sort_values(ascending = False)
+    cats = list(cat_p.index)
     # create visuals
-    # TODO: Below is an example - modify to create your own visuals
-    graphs = [
+    figures = [
         {
             'data': [
                 Bar(
@@ -63,16 +64,36 @@ def index():
                     'title': "Genre"
                 }
             }
+        },
+        {
+            'data': [
+                Bar(
+                    x=cats,
+                    y=cat_p
+                )
+            ],
+
+            'layout': {
+                'title': 'Proportion of Messages <br> by Category',
+                'yaxis': {
+                    'title': "Proportion",
+                    'automargin':True
+                },
+                'xaxis': {
+                    'title': "Category",
+                    'tickangle': -40,
+                    'automargin':True
+                }
+            }
         }
     ]
     
     # encode plotly graphs in JSON
-    ids = ["graph-{}".format(i) for i, _ in enumerate(graphs)]
-    graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
+    ids = ["figure-{}".format(i) for i, _ in enumerate(figures)]
+    figuresJSON = json.dumps(figures, cls=plotly.utils.PlotlyJSONEncoder)
     
-    # render web page with plotly graphs
-    return render_template('master.html', ids=ids, graphJSON=graphJSON)
-
+    # render web page with plotly figures
+    return render_template('master.html', ids=ids, figuresJSON=figuresJSON, data_set=df)
 
 # web page that handles user query and displays model results
 @app.route('/go')
