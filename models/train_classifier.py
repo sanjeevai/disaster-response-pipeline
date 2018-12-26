@@ -24,6 +24,17 @@ warnings.filterwarnings('ignore')
 
 
 def load_data(database_filepath):
+    """
+    Loads data from SQL Database
+
+    Args:
+    database_filepath: SQL database file
+
+    Returns:
+    X pandas_dataframe: Features dataframe
+    Y pandas_dataframe: Target dataframe
+    category_names list: Target labels 
+    """
     engine = create_engine('sqlite:///{}'.format(database_filepath))
     df = pd.read_sql_table('DisasterResponse', con = engine)
     X,Y = df['message'], df.iloc[:,4:]
