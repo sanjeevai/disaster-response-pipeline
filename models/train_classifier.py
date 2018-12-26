@@ -54,7 +54,6 @@ def tokenize(text):
     text str: Messages as text data
 
     Returns:
-
     words list: Processed text after normalizing, tokenizing and lemmatizing
     """
     # Normalize text
@@ -74,7 +73,12 @@ def tokenize(text):
 
 
 def build_model():
-
+    """
+    Build model with GridSearchCV
+    
+    Returns:
+    Trained model after performing grid search
+    """
     # model pipeline
     pipeline = Pipeline([('vect', CountVectorizer(tokenizer=tokenize)),
                          ('tfidf', TfidfTransformer()),
