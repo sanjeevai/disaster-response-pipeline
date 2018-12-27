@@ -32,7 +32,7 @@
 
 ### 1. Project Overview
 
-In this project, I'll apply data engineering to analyze disaster data from [Figure Eight](https://www.figure-eight.com/) to build a model for an API that classifies disaster messages.
+In this project, I'll apply data engineering to analyze disaster data from <a href="https://www.figure-eight.com/" target="_blank">Figure Eight</a> to build a model for an API that classifies disaster messages.
 
 _data_ directory contains a data set which are real messages that were sent during disaster events. I will be creating a machine learning pipeline to categorize these events so that appropriate disaster relief agency can be reached out for help.
 
@@ -164,7 +164,7 @@ This will start the web app and will direct you to a URL where you can enter mes
 
 ### 4. Conclusion
 
-Some information about training data set as seen on main page of web app.
+Some information about training data set as seen on the main page of the web app.
 
 ![genre](img/genre.jpg)
 
@@ -223,6 +223,6 @@ The standard libraries which are not mentioned in _requirements.txt_ are _pickle
 
 ### 7. Credits and Acknowledgements
 
-Thanks [Udacity](https://www.udacity.com) for letting me use their logo as favicon for this web app.
+Thanks <a href="https://www.udacity.com" target="_blank">Udacity</a> for letting me use their logo as favicon for this web app.
 
-Another [blog post](https://medium.com/udacity/three-awesome-projects-from-udacitys-data-scientist-program-609ff0949bed) was a great motivation to improve my documentation. This post shows some of the cool projects from [Data Scientist Nanodegree]() students. This really shows how far we can go if we dive deep into the project.
+Another <a href="https://medium.com/udacity/three-awesome-projects-from-udacitys-data-scientist-program-609ff0949bed" target="_blank">blog post</a> was a great motivation to improve my documentation. This post shows some of the cool projects from <a href="https://in.udacity.com/course/data-scientist-nanodegree--nd025" target="_blank">Data Scientist Nanodegree</a> students. This really shows how far we can go if we dive deep into the project.
