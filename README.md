@@ -42,7 +42,7 @@ File _models/train_classifier.py_ contains machine learning pipeline that:
 
 <a id='eg'></a>
 
-Running [this command](#com) from app directory will start the web app where users can enter their query, i.e., a request message sent during a natural disaster, e.g. _"Please, we need tents and water. We are in Silo, Thank you!"_.
+Running [this command](#com) **from app directory** will start the web app where users can enter their query, i.e., a request message sent during a natural disaster, e.g. _"Please, we need tents and water. We are in Silo, Thank you!"_.
 
 **_Screenshot 1_**
 
@@ -60,7 +60,7 @@ There are three steps to get up and runnning with the web app if you want to sta
 
 1. Data Cleaning
 
-Go to the project directory and the run the following command:
+**Go to the project directory** and the run the following command:
 
 ```bat
 python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db
@@ -72,7 +72,7 @@ _DisasterResponse.db_ already exists in _data_ folder but the above command will
 
 2. Training Classifier
 
-After the data cleaning process, run this command from the project directory:
+After the data cleaning process, run this command **from the project directory**:
 
 ```bat
 python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl
@@ -87,7 +87,7 @@ It took me around **4 minutes** to train the classifier with grid search.
 
 Now that we have cleaned the data and trained our model. Now it's time to see the prediction in a user friendly way.
 
-Go the _app_ directory and run the following command:
+**Go the app directory** and run the following command:
 
 <a id='com'></a>
 
