@@ -94,6 +94,8 @@ It took me around **4 minutes** to train the classifier with grid search.
 
 When the models is saved, it will look something like this.
 
+<a id='acc'></a>
+
 **_Screenshot 5_**
 
 ![train_classifier_2.jpg](img/train_classifier_2.jpg)
@@ -112,11 +114,19 @@ python run.py
 
 This will start the web app and will direct you to a URL where you can enter messages and get classification results for it.
 
-An example is mentioned [above](#eg)
+**_Screenshot 6_**
+
+![web_app](img/web_app.jpg)
 
 ### Conclusion
 
-Data is highly imbalanced. Though the accuracy metric is high (you will see the exact value after the model is trained by grid search, it is ~0.94), it has a poor value for recall (~0.6). So, take appropriate measures when using this model for decision-making process at a larger scale or in a production environment.
+Some information about training data set as seen on main page of web app.
+
+![genre](img/genre.jpg)
+
+![dist](img/dist.jpg)
+
+As we can see the data is highly imbalanced. Though the accuracy metric is [high](#acc) (you will see the exact value after the model is trained by grid search, it is ~0.94), it has a poor value for recall (~0.6). So, take appropriate measures when using this model for decision-making process at a larger scale or in a production environment.
 
 ### Files
 
