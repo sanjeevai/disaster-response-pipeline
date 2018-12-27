@@ -94,7 +94,7 @@ It took me around **4 minutes** to train the classifier with grid search.
 
 When the models is saved, it will look something like this.
 
-**_Screnshot 5_**
+**_Screenshot 5_**
 
 ![train_classifier_2.jpg](img/train_classifier_2.jpg)
 
