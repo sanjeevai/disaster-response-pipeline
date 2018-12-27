@@ -81,11 +81,22 @@ After the data cleaning process, run this command **from the project directory**
 ```bat
 python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl
 ```
+
 This will use cleaned data to train the model, improve the model with grid search and saved the model to a pickle file (_classifer.pkl_).
 
 _classifier.pkl_ already exists but the above command will still run and replace the file will same information.
 
+_**Screenshot 4**_
+
+![train_classifier_1](img/train_classifier_1.jpg)
+
 It took me around **4 minutes** to train the classifier with grid search.
+
+When the models is saved, it will look something like this.
+
+**_Screnshot 5_**
+
+![train_classifier_2.jpg](img/train_classifier_2.jpg)
 
 3. Starting the web app
 
