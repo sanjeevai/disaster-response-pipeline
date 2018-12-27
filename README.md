@@ -96,7 +96,7 @@ There are three steps to get up and runnning with the web app if you want to sta
 
 <a id='cleaning'></a>
 
-3.1. Data Cleaning
+#### 3.1. Data Cleaning
 
 **Go to the project directory** and the run the following command:
 
@@ -114,7 +114,7 @@ _DisasterResponse.db_ already exists in _data_ folder but the above command will
 
 <a id='training'></a>
 
-3.2. Training Classifier
+#### 3.2. Training Classifier
 
 After the data cleaning process, run this command **from the project directory**:
 
@@ -142,7 +142,7 @@ When the models is saved, it will look something like this.
 
 <a id='starting'></a>
 
-3.3. Starting the web app
+#### 3.3. Starting the web app
 
 Now that we have cleaned the data and trained our model. Now it's time to see the prediction in a user friendly way.
 
