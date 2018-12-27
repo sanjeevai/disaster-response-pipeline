@@ -24,7 +24,6 @@
                     <ul class="nav navbar-nav">
                         <li><a href="https://www.udacity.com/" target="_blank" style="color:white;">Made with Udacity</a></li>
                         <li><a href="https://github.com/sanjeevai/" target="_blank" style="color:white;">GitHub</a></li>
-                        <li><a href="https://medium.com/@sanjeevai" target="_blank" style="color:white;">Blog</a></li>
                         <li><a href="mailto:sanjeev.yadav.ai@outlook.com" target="_top" style="color:white;">Contact</a></li>
                     </ul>
                 </div>
@@ -60,8 +59,11 @@
                     <h1 class="text-center">Overview of Training Dataset</h1>
                 </div>
             {% endblock %}
-            <div id="{{ids[0]}}"></div>
-            <div id="{{ids[1]}}"></div>
+
+            {% for id in ids %}
+            <div id="{{id}}"></div>
+            {% endfor %}
+
         </div>
 
         <script type="text/javascript">
