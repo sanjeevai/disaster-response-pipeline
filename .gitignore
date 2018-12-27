@@ -9,3 +9,4 @@
 
 # Python cache
 app/__pycache__/*.pyc
+models/__pycache__/*.pyc
