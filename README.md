@@ -109,22 +109,36 @@ Data is highly imbalanced. Though the accuracy metric is high (you will see the 
 .
 |
 +-app
-|  |
-|  +-template
-|  | |
-|  | +-+master.html # main page of web app
-|  | +-+go.html # classification result page of web app
-|  +-+run.py # Flask file that runs app
+| |
+| |
+| +-static
+| | |
+| | +-+favicon.ico---------------------# FAVICON FOR THE WEB APP
+| |
+| +-template
+| | |
+| | +-+go.html-------------------------# CLASSIFICATION RESULT PAGE OF WEB APP
+| | +-+master.html---------------------# MAIN PAGE OF WEB APP
+| |
+| +-+run.py----------------------------# FLASK FILE THAT RUNS APP
+|
 +-data
 | |
-| +-+disaster_categories.csv # data to process
-| +-+disaster_messages.csv # data to process
-| +-+process_data.py # performs ETL process
-| +-+DisasterResponse.db # database to save clean data to
+| +-+disaster_categories.csv-----------# DATA TO PROCESS
+| +-+disaster_messages.csv-------------# DATA TO PROCESS
+| +-+DisasterResponse.db---------------# DATABASE TO SAVE CLEAN DATA TO
+| +-+process_data.py-------------------# PERFORMS ETL PROCESS
+|
++-img
+| |
+| +-+master.jpg------------------------# A SCREENSHOT OF THE MAIN PAGE
+| +-+res.jpg---------------------------# A SCREENSHOT OF THE CLASSIFICATION PAGE
+|
 +-models
 | |
-| +-+train_classifier.py # performs supervised learning
-| +-+classifier.pkl # saved model
+| +-+classifier.pkl--------------------# SAVED MODEL
+| +-+train_classifier.py---------------# PERFORMS CLASSIFICATION TASK
+
 </pre>
 
 ### Libraries
