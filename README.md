@@ -25,13 +25,13 @@ File _data/process_data.py_ contains data cleaning pipeline that:
 - Loads the `messages` and `categories` dataset
 - Merges the two datasets
 - Cleans the data
-- Stores it in a SQLite database
+- Stores it in a **SQLite database**
 
 2. ML Pipeline
 
 File _models/train_classifier.py_ contains machine learning pipeline that:
 
-- Loads data from the SQLite database
+- Loads data from the **SQLite database**
 - Splits the data into training and testing sets
 - Builds a text processing and machine learning pipeline
 - Trains and tunes a model using GridSearchCV
