@@ -71,7 +71,9 @@ The first two arguments are input data and the third argument is the SQLite Data
 _DisasterResponse.db_ already exists in _data_ folder but the above command will still run and replace the file will same information. 
 
 **_Screenshot 3_**
-![process_data](img/process_data.png)
+
+![process_data](img/process_data.jpg)
+
 2. Training Classifier
 
 After the data cleaning process, run this command **from the project directory**:
