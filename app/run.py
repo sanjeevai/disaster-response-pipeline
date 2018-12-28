@@ -1,15 +1,21 @@
 # imports
 
+from collections import Counter
 import json, plotly
 import pandas as pd
+from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from flask import Flask
 from flask import render_template, request, jsonify
+import numpy as np
+import operator
 from plotly.graph_objs import Bar
 from pprint import pprint
+import re
 from sklearn.externals import joblib
 from sqlalchemy import create_engine
+# from models.train_classifier import tokenize as t
 
 # initializing Flask app
 app = Flask(__name__)
@@ -23,17 +29,23 @@ def tokenize(text):
 
     Returns:
 
-    clean_tokens list: Processed text after normalizing, tokenizing and lemmatizing
+    # clean_tokens list: Processed text after normalizing, tokenizing and lemmatizing
+    words list: Processed text after normalizing, tokenizing and lemmatizing
     """
-    tokens = word_tokenize(text)
-    lemmatizer = WordNetLemmatizer()
+    # Normalize text
+    text = re.sub(r"[^a-zA-Z0-9]", " ", text.lower())
+    
+    # tokenize text
+    words = word_tokenize(text)
+    
+    # remove stop words
+    stopwords_ = stopwords.words("english")
+    words = [word for word in words if word not in stopwords_]
+    
+    # extract root form of words
+    words = [WordNetLemmatizer().lemmatize(word, pos='v') for word in words]
 
-    clean_tokens = []
-    for tok in tokens:
-        clean_tok = lemmatizer.lemmatize(tok).lower().strip()
-        clean_tokens.append(clean_tok)
-
-    return clean_tokens
+    return words
 
 # load data
 engine = create_engine('sqlite:///../data/DisasterResponse.db')
@@ -54,10 +66,35 @@ def index():
     genre_names = list(genre_counts.index)                # genre names
     cat_p = df[df.columns[4:]].sum()/len(df)              # proportion based on\
                                                           # categories
-    cat_p = cat_p.sort_values(ascending = False)          # largest bar will be \
+    cat_p = cat_p.sort_values(ascending = False)          # largest bar will be\
                                                           # on left
     cats = list(cat_p.index)                              # category names
+
+    words_with_repetition=[]                              # will contain all\
+                                                          # words words with\
+                                                          # repetition
+    for text in df['message'].values:
+        tokenized_ = tokenize(text)
+        words_with_repetition.extend(tokenized_)
+
+    word_count_dict = Counter(words_with_repetition)      # dictionary\
+                                                          # containing word\
+                                                          # count for all words
     
+    sorted_word_count_dict = dict(sorted(word_count_dict.items(),
+                                         key=operator.itemgetter(1),
+                                         reverse=True))   # sort dictionary by\
+                                                          # values
+    top, top_10 =0, {}
+
+    for k,v in sorted_word_count_dict.items():
+        top_10[k]=v
+        top+=1
+        if top==10:
+            break
+    words=list(top_10.keys())
+    pprint(words)
+    count_props=100*np.array(list(top_10.values()))/df.shape[0]
     # create visuals
     figures = [
         {
@@ -96,6 +133,26 @@ def index():
                     'title': "Category",
                     'tickangle': -40,
                     'automargin':True
+                }
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x=words,
+                    y=count_props
+                )
+            ],
+
+            'layout': {
+                'title': 'Frequency of top 10 words <br> as percentage',
+                'yaxis': {
+                    'title': 'Occurrence<br>(Out of 100)',
+                    'automargin': True
+                },
+                'xaxis': {
+                    'title': 'Top 10 words',
+                    'automargin': True
                 }
             }
         }
