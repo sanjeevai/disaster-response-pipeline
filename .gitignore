@@ -1,6 +1,6 @@
 # vscode settings
 .vscode/*
-
+app/.vscode/*
 # ipynb checkpoints
 .ipynb_checkpoints/*
 
