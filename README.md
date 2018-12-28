@@ -166,7 +166,11 @@ This will start the web app and will direct you to a URL where you can enter mes
 
 Some information about training data set as seen on the main page of the web app.
 
+**_Screenshot 7_**
+
 ![genre](img/genre.jpg)
+
+**_Screenshot 8_**
 
 ![dist](img/dist.jpg)
 
