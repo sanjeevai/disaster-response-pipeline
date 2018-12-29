@@ -15,7 +15,6 @@ from pprint import pprint
 import re
 from sklearn.externals import joblib
 from sqlalchemy import create_engine
-# from models.train_classifier import tokenize as t
 
 # initializing Flask app
 app = Flask(__name__)
