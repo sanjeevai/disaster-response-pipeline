@@ -10,3 +10,7 @@ app/.vscode/*
 # Python cache
 app/__pycache__/*.pyc
 models/__pycache__/*.pyc
+
+# Exports of README
+README.html
+README.pdf
