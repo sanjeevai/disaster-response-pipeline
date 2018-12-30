@@ -28,6 +28,8 @@
 6. [Libraries](#libraries)
 7. [Credits and Acknowledgements](#credits)
 
+***
+
 <a id='overview'></a>
 
 ### 1. Project Overview
