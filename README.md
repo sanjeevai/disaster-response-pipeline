@@ -7,32 +7,25 @@
 ## Table of Contents
 
 1. [Project Overview](#overview)
-2. [Project Components](#components)
-
-    2.1. [ETL Pipeline](#etl_pipeline)
-
-    2.2. [ML Pipeline](#ml_pipeline)
-
-    2.3. [Flask Web App](#flask)
-
-3. [Running](#run)
-
-    3.1. [Data Cleaning](#cleaning)
-
-    3.2. [Training Classifier](#training)
-
-    3.3. [Starting the Web App](#starting)
-
-4. [Conclusion](#conclusion)
-5. [Files](#files)
-6. [Libraries](#libraries)
-7. [Credits and Acknowledgements](#credits)
+2. [Project Motivation](#motive)
+3. [Project Components](#components)
+    1. [ETL Pipeline](#etl_pipeline)
+    2. [ML Pipeline](#ml_pipeline)
+    3. [Flask Web App](#flask)
+4. [Running](#run)
+    1. [Data Cleaning](#cleaning)
+    2. [Training Classifier](#training)
+    3. [Starting the Web App](#starting)
+5. [Conclusion](#conclusion)
+6. [Files](#files)
+7. [Libraries](#libraries)
+8. [Credits and Acknowledgements](#credits)
 
 ***
 
 <a id='overview'></a>
 
-### 1. Project Overview
+## 1. Project Overview
 
 In this project, I'll apply data engineering to analyze disaster data from <a href="https://www.figure-eight.com/" target="_blank">Figure Eight</a> to build a model for an API that classifies disaster messages.
 
@@ -44,13 +37,13 @@ This project will include a web app where an emergency worker can input a new me
 
 <a id='components'></a>
 
-### 2. Project Components
+## 2. Project Components
 
 There are three components of this project:
 
 <a id='etl_pipeline'></a>
 
-#### 2.1. ETL Pipeline
+### 2.1. ETL Pipeline
 
 File _data/process_data.py_ contains data cleaning pipeline that:
 
@@ -61,7 +54,7 @@ File _data/process_data.py_ contains data cleaning pipeline that:
 
 <a id='ml_pipeline'></a>
 
-#### 2.2. ML Pipeline
+### 2.2. ML Pipeline
 
 File _models/train_classifier.py_ contains machine learning pipeline that:
 
@@ -74,7 +67,7 @@ File _models/train_classifier.py_ contains machine learning pipeline that:
 
 <a id='flask'></a>
 
-#### 2.3. Flask Web App
+### 2.3. Flask Web App
 
 <a id='eg'></a>
 
@@ -92,13 +85,13 @@ What the app will do is that it will classify the text message into categories s
 
 <a id='run'></a>
 
-### 3. Running
+## 3. Running
 
 There are three steps to get up and runnning with the web app if you want to start from ETL process.
 
 <a id='cleaning'></a>
 
-#### 3.1. Data Cleaning
+### 3.1. Data Cleaning
 
 **Go to the project directory** and the run the following command:
 
@@ -116,7 +109,7 @@ _DisasterResponse.db_ already exists in _data_ folder but the above command will
 
 <a id='training'></a>
 
-#### 3.2. Training Classifier
+### 3.2. Training Classifier
 
 After the data cleaning process, run this command **from the project directory**:
 
@@ -144,7 +137,7 @@ When the models is saved, it will look something like this.
 
 <a id='starting'></a>
 
-#### 3.3. Starting the web app
+### 3.3. Starting the web app
 
 Now that we have cleaned the data and trained our model. Now it's time to see the prediction in a user friendly way.
 
@@ -164,7 +157,7 @@ This will start the web app and will direct you to a URL where you can enter mes
 
 <a id='conclusion'></a>
 
-### 4. Conclusion
+## 4. Conclusion
 
 Some information about training data set as seen on the main page of the web app.
 
@@ -180,7 +173,7 @@ As we can see the data is highly imbalanced. Though the accuracy metric is [high
 
 <a id='files'></a>
 
-### 5. Files
+## 5. Files
 
 <pre>
 .
@@ -203,7 +196,7 @@ As we can see the data is highly imbalanced. Though the accuracy metric is [high
 | |
 | +-+disaster_categories.csv-----------# DATA TO PROCESS
 | +-+disaster_messages.csv-------------# DATA TO PROCESS
-| +-+DisasterResponse.db---------------# DATABASE TO SAVE CLEAN DATA TO
+| +-+DisasterResponse.db---------------# DATABASE TO SAVE CLEANED DATA TO
 | +-+process_data.py-------------------# PERFORMS ETL PROCESS
 |
 +-img
@@ -220,15 +213,15 @@ As we can see the data is highly imbalanced. Though the accuracy metric is [high
 
 <a id='libraries'></a>
 
-### 6. Libraries
+## 6. Libraries
 
 This project uses Python 3.6.6 and the necessary libraries are mentioned in _requirements.txt_.
 The standard libraries which are not mentioned in _requirements.txt_ are _collections_, _json_, _operator_, _pickle_, _pprint_, _re_, _sys_, _time_ and _warnings_.
 
 <a id='credits'></a>
 
-### 7. Credits and Acknowledgements
+## 7. Credits and Acknowledgements
 
 Thanks <a href="https://www.udacity.com" target="_blank">Udacity</a> for letting me use their logo as favicon for this web app.
 
-Another <a href="https://medium.com/udacity/three-awesome-projects-from-udacitys-data-scientist-program-609ff0949bed" target="_blank">blog post</a> was a great motivation to improve my documentation. This post shows some of the cool projects from <a href="https://in.udacity.com/course/data-scientist-nanodegree--nd025" target="_blank">Data Scientist Nanodegree</a> students. This really shows how far we can go if we dive deep into the project.
+Another <a href="https://medium.com/udacity/three-awesome-projects-from-udacitys-data-scientist-program-609ff0949bed" target="_blank">blog post</a> was a great motivation to improve my documentation. This post discusses some of the cool projects from <a href="https://in.udacity.com/course/data-scientist-nanodegree--nd025" target="_blank">Data Scientist Nanodegree</a> students. This really shows how far we can go if we apply the concepts learned beyond the classroom content to build something that inspire others.
