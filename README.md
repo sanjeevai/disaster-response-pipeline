@@ -212,9 +212,9 @@ As we can see the data is highly imbalanced. Though the accuracy metric is [high
 | +-+res.jpg---------------------------# A SCREENSHOT OF THE CLASSIFICATION PAGE
 |
 +-models
-| |
-| +-+classifier.pkl--------------------# SAVED MODEL
-| +-+train_classifier.py---------------# PERFORMS CLASSIFICATION TASK
+  |
+  +-+classifier.pkl--------------------# SAVED MODEL
+  +-+train_classifier.py---------------# PERFORMS CLASSIFICATION TASK
 
 </pre>
 
