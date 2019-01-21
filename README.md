@@ -6,20 +6,20 @@
 
 ## Table of Contents
 
-1. [Project Overview](#overview)
-2. [Project Motivation](#motive)
-3. [Project Components](#components)
-    1. [ETL Pipeline](#etl_pipeline)
-    2. [ML Pipeline](#ml_pipeline)
-    3. [Flask Web App](#flask)
-4. [Running](#run)
-    1. [Data Cleaning](#cleaning)
-    2. [Training Classifier](#training)
-    3. [Starting the Web App](#starting)
-5. [Conclusion](#conclusion)
-6. [Files](#files)
-7. [Libraries](#libraries)
-8. [Credits and Acknowledgements](#credits)
+- [Project Overview](#overview)
+- [Project Motivation](#motive)
+- [Project Components](#components)
+    - [ETL Pipeline](#etl_pipeline)
+    - [ML Pipeline](#ml_pipeline)
+    - [Flask Web App](#flask)
+- [Running](#run)
+    - [Data Cleaning](#cleaning)
+    - [Training Classifier](#training)
+    - [Starting the Web App](#starting)
+- [Conclusion](#conclusion)
+- [Files](#files)
+- [Libraries](#libraries)
+- [Credits and Acknowledgements](#credits)
 
 ***
 
