@@ -7,7 +7,6 @@
 ## Table of Contents
 
 - [Project Overview](#overview)
-- [Project Motivation](#motive)
 - [Project Components](#components)
   - [ETL Pipeline](#etl_pipeline)
   - [ML Pipeline](#ml_pipeline)
