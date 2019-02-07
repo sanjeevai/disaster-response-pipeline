@@ -177,37 +177,21 @@ As we can see the data is highly imbalanced. Though the accuracy metric is [high
 
 <pre>
 .
-|
-+-app
-| |
-| |
-| +-static
-| | |
-| | +-+favicon.ico---------------------# FAVICON FOR THE WEB APP
-| |
-| +-template
-| | |
-| | +-+go.html-------------------------# CLASSIFICATION RESULT PAGE OF WEB APP
-| | +-+master.html---------------------# MAIN PAGE OF WEB APP
-| |
-| +-+run.py----------------------------# FLASK FILE THAT RUNS APP
-|
-+-data
-| |
-| +-+disaster_categories.csv-----------# DATA TO PROCESS
-| +-+disaster_messages.csv-------------# DATA TO PROCESS
-| +-+DisasterResponse.db---------------# DATABASE TO SAVE CLEANED DATA TO
-| +-+process_data.py-------------------# PERFORMS ETL PROCESS
-|
-+-img
-| |
-| +-+master.jpg------------------------# A SCREENSHOT OF THE MAIN PAGE
-| +-+res.jpg---------------------------# A SCREENSHOT OF THE CLASSIFICATION PAGE
-|
-+-models
-  |
-  +-+classifier.pkl--------------------# SAVED MODEL
-  +-+train_classifier.py---------------# PERFORMS CLASSIFICATION TASK
+├── app
+│   ├── run.py------------------------# FLASK FILE THAT RUNS APP
+│   ├── static
+│   │   └── favicon.ico---------------# FAVICON FOR THE WEB APP
+│   └── templates
+│       ├── go.html-------------------# CLASSIFICATION RESULT PAGE OF WEB APP
+│       └── master.html---------------# MAIN PAGE OF WEB APP
+├── data
+│   ├── DisasterResponse.db-----------# DATABASE TO SAVE CLEANED DATA TO
+│   ├── disaster_categories.csv-------# DATA TO PROCESS
+│   ├── disaster_messages.csv---------# DATA TO PROCESS
+│   └── process_data.py---------------# PERFORMS ETL PROCESS
+├── img-------------------------------# PLOTS FOR USE IN README AND THE WEB APP
+├── models
+│   └── train_classifier.py-----------# PERFORMS CLASSIFICATION TASK
 
 </pre>
 
