@@ -17,7 +17,7 @@
   - [Starting the Web App](#starting)
 - [Conclusion](#conclusion)
 - [Files](#files)
-- [Libraries](#libraries)
+- [Software Requirements](#sw)
 - [Credits and Acknowledgements](#credits)
 
 ***
@@ -194,11 +194,11 @@ As we can see the data is highly imbalanced. Though the accuracy metric is [high
 
 </pre>
 
-<a id='libraries'></a>
+<a id='sw'></a>
 
-## 6. Libraries
+## 6. Software Requirements
 
-This project uses Python 3.6.6 and the necessary libraries are mentioned in _requirements.txt_.
+This project uses **Python 3.6.6** and the necessary libraries are mentioned in _requirements.txt_.
 The standard libraries which are not mentioned in _requirements.txt_ are _collections_, _json_, _operator_, _pickle_, _pprint_, _re_, _sys_, _time_ and _warnings_.
 
 <a id='credits'></a>
