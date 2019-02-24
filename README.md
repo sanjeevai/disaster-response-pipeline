@@ -100,7 +100,7 @@ python data/process_data.py data/disaster_messages.csv data/disaster_categories.
 
 The first two arguments are input data and the third argument is the SQLite Database in which we want to save the cleaned data. The ETL pipeline is in _process_data.py_.
 
-_DisasterResponse.db_ already exists in _data_ folder but the above command will still run and replace the file will same information. 
+_DisasterResponse.db_ already exists in _data_ folder but the above command will still run and replace the file with same information. 
 
 **_Screenshot 3_**
 
